@@ -22,6 +22,19 @@
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">  
+                    <!-- Right Side Of Navbar -->
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="{{ url('/report') }}">
+                                <img height="30" width="30" src="img/clock.png" />
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ url('/pictures') }}">
+                                <img height="30" width="30"  src="img/settings.png" />
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>

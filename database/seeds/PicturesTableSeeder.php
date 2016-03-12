@@ -43,6 +43,41 @@ class PicturesTableSeeder extends Seeder
                 'file' => 'jonas.jpg',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
+            ],
+            [
+                'id' => '8',
+                'name' => 'Rias',
+                'file' => 'rias.jpg',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ],
+            [
+                'id' => '10',
+                'name' => 'Seeger',
+                'file' => 'seeger.jpg',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ],
+            [
+                'id' => '11',
+                'name' => 'Sidney',
+                'file' => 'sidney.jpg',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ],
+            [
+                'id' => '12',
+                'name' => 'Simon',
+                'file' => 'simon.jpg',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ],
+            [
+                'id' => '14',
+                'name' => 'Thomas',
+                'file' => 'thomas.jpg',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
             ]
         ];
 

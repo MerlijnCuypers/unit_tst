@@ -27,7 +27,16 @@ Route::group(['middleware' => ['web']], function () {
     // redefine landing page here to get middleware logic working
     // variable like $errors would not be defined
     Route::get('/', 'ElectionController@index');
-    //s routes Election
+
+    // routes Election
     Route::get('/election', 'ElectionController@index');
+    Route::post('/ajax/election', 'ElectionController@storeAjax');
     Route::post('/election', 'ElectionController@store');
+
+    // route report
+    Route::get('/report', 'ReportController@index');
+
+    // route pictures
+    Route::get('/pictures', 'PictureController@index');
+    Route::post('/picture', 'PictureController@store');
 });
