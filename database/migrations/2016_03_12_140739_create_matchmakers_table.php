@@ -3,16 +3,16 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMatchmakerTable extends Migration
+class CreateMatchmakersTable extends Migration
 {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
+     public function up()
     {
-        Schema::create('matchmaker', function (Blueprint $table) {
+        Schema::create('matchmakers', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('picture1_id')->index();
             $table->integer('picture2_id')->index();
@@ -28,6 +28,6 @@ class CreateMatchmakerTable extends Migration
      */
     public function down()
     {
-        Schema::drop('matchmaker');
+        Schema::drop('matchmakers');
     }
 }
