@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Unit-t Hot or Not tst</title>
+        <title>Unit-t Hot or Not</title>
 
         <!-- Styles -->
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
@@ -22,6 +22,19 @@
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">  
+                    <!-- Right Side Of Navbar -->
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="{{ url('/report') }}">
+                                <img height="30" width="30" src="img/clock.png" />
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ url('/pictures') }}">
+                                <img height="30" width="30"  src="img/settings.png" />
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>

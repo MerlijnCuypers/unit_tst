@@ -20,31 +20,39 @@ class ElectionController extends Controller
         ]);
     }
 
+    public function storeAjax(Request $request)
+    {
+        $this->store($request, true);
+        return view('election.pictures', [
+            'election' => $this->electionRepository->getSetup(),
+        ]);
+    }
+
     /**
      * Create a new task.
      *
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $storeByAjax = false)
     {
         $this->validate($request, [
             'wonPicId' => 'required|integer',
             'lostPicId' => 'required|integer',
         ]);
-        // find or pictures with id exist
+        // check or pictures with id exist
         $wonPic = Picture::findOrFail($request->wonPicId);
         $lostPic = Picture::findOrFail($request->lostPicId);
-        
+
         $election = new Election;
         $election->winning_picture_id = $wonPic->id;
         $election->losing_picture_id = $lostPic->id;
         $election->save();
-        
-        $this->matchmakerRepository->electMatch($wonPic->id, $lostPic->id);
-
-        return view('election.pictures', [
-            'election' => $this->electionRepository->getSetup(),
-        ]);
+        // if default post => load full page
+        if (!$storeByAjax) {
+            return view('election.index', [
+                'election' => $this->electionRepository->getSetup(),
+            ]);
+        }
     }
 }
