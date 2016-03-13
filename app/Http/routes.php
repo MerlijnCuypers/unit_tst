@@ -10,7 +10,7 @@
   |
   | Do not use middleware logic here like $errors => you will get error variable is not defined
  */
- 
+
 
 /*
   |--------------------------------------------------------------------------
@@ -35,6 +35,8 @@ Route::group(['middleware' => ['web']], function () {
 
     // route report
     Route::get('/report', 'ReportController@index');
+    Route::get('/report/totalReport', 'ReportController@totalReport');
+    Route::get('/report/flowReport', 'ReportController@flowReport');
 
     // route pictures
     Route::get('/pictures', 'PictureController@index');
