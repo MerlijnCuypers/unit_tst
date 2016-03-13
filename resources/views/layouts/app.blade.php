@@ -16,12 +16,12 @@
             <div class="container">
                 <div class="navbar-header">
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">                        
+                    <a class="navbar-brand" href="{{ url('/') }}">
                         <img class="col-sm-11" src="img/logo.png" />
                     </a>
                 </div>
 
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">  
+                <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <li>
@@ -43,8 +43,19 @@
 
         <!-- JavaScripts -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> 
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        @if (isset($election))
         <script src="{{ url('/js/election.js') }}"></script>
+        @endif
+        @if (isset($pictures))
         <script src="{{ url('/js/picture.js') }}"></script>
+        @endif
+        @if (isset($reportHot))
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script language="javascript" type="text/javascript" src="http://www.flotcharts.org/flot/jquery.flot.js"></script>
+        <script language="javascript" type="text/javascript" src="http://www.flotcharts.org/flot/jquery.flot.time.js"></script>
+        <script language="javascript" type="text/javascript" src="http://www.flotcharts.org/flot/jquery.flot.resize.js"></script>
+        <script src="{{ url('/js/report.js') }}"></script>
+        @endif
     </body>
 </html>
