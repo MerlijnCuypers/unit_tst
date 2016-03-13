@@ -38,5 +38,5 @@ Route::group(['middleware' => ['web']], function () {
 
     // route pictures
     Route::get('/pictures', 'PictureController@index');
-    Route::post('/picture', 'PictureController@store');
+    Route::post('/picture/upload', 'PictureController@store');
 });
