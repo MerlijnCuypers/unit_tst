@@ -37,16 +37,13 @@ class ElectionController extends Controller
     public function store(Request $request, $storeByAjax = false)
     {
         $this->validate($request, [
-            'wonPicId' => 'required|integer',
-            'lostPicId' => 'required|integer',
-        ]);
-        // check or pictures with id exist
-        $wonPic = Picture::findOrFail($request->wonPicId);
-        $lostPic = Picture::findOrFail($request->lostPicId);
+            'wonPicId' => 'required|integer|exists:pictures,id',
+            'lostPicId' => 'required|integer|exists:pictures,id',
+        ]); 
 
         $election = new Election;
-        $election->winning_picture_id = $wonPic->id;
-        $election->losing_picture_id = $lostPic->id;
+        $election->winning_picture_id = $request->wonPicId;
+        $election->losing_picture_id = $request->lostPicId;
         $election->save();
         // if default post => load full page
         if (!$storeByAjax) {
