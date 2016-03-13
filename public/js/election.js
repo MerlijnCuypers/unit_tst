@@ -8,15 +8,17 @@ function initPics() {
     // var loader = $('<div class="col-sm-12 text-center"><img id="loader" src="img/loading.GIF" /></div>');
     $('.pictureContainer').find("img#loader").remove();
     $('.pictureBox').fadeIn();
-    $('#pic1Box').on('click', function () {
+    $('#pic1Box').on('click', function (event) {
+        event.preventDefault()
         // $('.pictureContainer').prepend(loader);
-        $('.pictureBox').fadeOut(1500, function () {
+        $('.pictureBox').fadeOut(function () {
             saveInput(pic1Id, pic2Id);
         });
     });
-    $('#pic2Box').on('click', function () {
+    $('#pic2Box').on('click', function (event) {
+        event.preventDefault()
         // $('.pictureContainer').append(loader);
-        $('.pictureBox').fadeOut(1500, function () {
+        $('.pictureBox').fadeOut(function () {
             saveInput(pic2Id, pic1Id);
         });
     });
