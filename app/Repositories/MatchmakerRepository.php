@@ -3,6 +3,7 @@
 use App\Matchmaker;
 use App\Election;
 use App\Picture;
+use \DB;
 
 class MatchmakerRepository extends Repository
 {
@@ -32,35 +33,26 @@ class MatchmakerRepository extends Repository
      */
     public function makeNewRandomList()
     {
-        // get picture ids
-        $pictureIdList = Picture::select('id')
-            ->get('id');
-        $idList = array();
-        foreach ($pictureIdList as $picture) {
-            $idList[] = $picture->id;
-        }
-        //make list of unique matches of ids
-        $matchList = array();
-        $max = $pictureIdList->count();
-        for ($i = 0; $i < $max; $i++) {
-            for ($x = $i + 1; $x < $max; $x++) {
-                $matchList[] = $idList[$i] . '_' . $idList[$x];
-            }
-        }
-        // randomise list
-        shuffle($matchList);
-
         // empty matchmaker table
         Matchmaker::truncate();
-
-        // dump random list into DB        
-        foreach ($matchList as $match) {
-            $pictures = explode('_', $match);
-            $match = new Matchmaker();
-            $match->picture1_id = $pictures[0];
-            $match->picture2_id = $pictures[1];
-            $match->save();
+        // use raw query for performance reason
+        $pictureIdList = DB::select('select id from pictures');
+        //save unique matches in DB
+        // no need to shuffle as getMatch() has random function
+        $max = count($pictureIdList);
+        $insterList = array();
+        for ($i = 0; $i < $max; $i++) {
+            for ($x = $i + 1; $x < $max; $x++) {
+                $insterList[] = array(
+                    'picture1_id' => $pictureIdList[$i]->id,
+                    'picture2_id' => $pictureIdList[$x]->id,
+                    'created_at' => date('Y-m-d H:i:s'),
+                    'updated_at' => date('Y-m-d H:i:s')
+                );
+            }
         }
+        // use bulk insert for performance reason
+        DB::table('matchmakers')->insert($insterList);
     }
 
     /**

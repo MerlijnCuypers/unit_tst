@@ -12,7 +12,7 @@
 
     </head>
     <body id="app-layout">
-        <nav class="navbar navbar-default">
+        <nav class="navbar navbar-default"  style="margin-bottom:65px ">
             <div class="container">
                 <div class="navbar-header">
                     <!-- Branding Image -->
